@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water FootPrint | Straw_Hats👒 Team</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* Light background for the whole page */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Aligns content at the top */
+            min-height: 100vh; /* Full viewport height */
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #a3cedb; /* Background for the box */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 20px; /* Adds some space above the container */
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto; /* Adds space around the slideshow */
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        .slides {
+            display: none;
+            width: 100%;
+            border-radius: 8px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #44a426;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(51, 140, 31, 0.5); /* Glowing effect */
+            transition: box-shadow 0.3s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.7); /* More intense glow on hover */
+        }
+        .paragraph-box {
+            background-color: #bacfec; /* Light background for the paragraph box */
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Floating effect */
+            padding: 20px;
+            margin-top: 20px;
+            display: inline-block; /* Prevents box from stretching full width */
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            color: #44a426;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Water FootPrint<span style="color: blue;">👣</span> </h1>
+        <h4>[ Created by Straw_Hats👒 Team ]</h4>
+        
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+            <img class="slides" src="img1.png" alt="Water Footprint Image 1">
+            <img class="slides" src="jeans.png" alt="Water Footprint Image 2">
+            <img class="slides" src="Sandwitch.png" alt="Water Footprint Image 3">
+            <img class="slides" src="farm.webp" alt="Water Footprint Image 4">
+            <img class="slides" src="water for all.jpg" alt="Water Footprint Image 5">
+        </div>
+
+        <div class="text-center">
+            <a href="chat.html" class="button">Chat With Water..! 🤖</a>
+            <a href="search.html" class="button">Search Food Item  🍎</a>
+        </div>
+        
+        <div class="paragraph-box">
+            <p>The concept of a water footprint measures the total volume of freshwater used to produce goods and services. It helps individuals and organizations understand the impact of their consumption on global water resources. By tracking the water footprint of various products, we can make more informed decisions and adopt practices that reduce water usage, contributing to the conservation of this vital resource. Learn more about how different foods impact water consumption and how you can make sustainable choices.</p>
+        </div>
+        
+        <a href="https://www.waterfootprint.org/">Know More about water FootPrint</a>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 5000); // Change image every 3 seconds
+        }
+    </script>
+</body>
+</html>

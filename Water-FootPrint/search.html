@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Footprint</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* Light background for the whole page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #a3cedb; /* Background for the box */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #44a426;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(51, 140, 31, 0.5); /* Glowing effect */
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.7); /* More intense glow on hover */
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .input-group input[type="text"],
+        .input-group input[type="file"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: calc(100% - 22px);
+        }
+        #camera-preview {
+            width: 100%;
+            height: auto;
+            display: none;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Water Footprint Calculator</h1>
+        <div class="input-group">
+            <label for="food-name">Enter Food Name:</label>
+            <input type="text" id="food-name" name="food-name">
+        </div>
+        <div class="input-group">
+            <label for="food-image">Or Upload an Image:</label>
+            <input type="file" id="food-image" name="food-image" accept="image/*">
+        </div>
+        <div class="input-group">
+            <button class="button" type="button" onclick="startCamera()">Capture Image with Camera</button>
+            <video id="camera-preview"></video>
+            <button id="capture-btn" class="button" type="button" onclick="captureImage()" style="display: none;">Capture</button>
+        </div>
+        <button class="button" type="button" onclick="processInput()">Submit</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        let cameraStream = null;
+
+        function startCamera() {
+            const cameraPreview = document.getElementById('camera-preview');
+            const captureButton = document.getElementById('capture-btn');
+
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    cameraStream = stream;
+                    cameraPreview.srcObject = stream;
+                    cameraPreview.play();
+                    cameraPreview.style.display = 'block';
+                    captureButton.style.display = 'inline-block';
+                })
+                .catch(function(error) {
+                    console.error("Error accessing the camera: ", error);
+                });
+            }
+        }
+
+        function captureImage() {
+            const video = document.getElementById('camera-preview');
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Stop the camera stream
+            video.srcObject.getTracks().forEach(track => track.stop());
+
+            // Convert the captured image to a data URL
+            const dataUrl = canvas.toDataURL('image/png');
+            processImage(dataUrl);
+        }
+
+        function processInput() {
+            const foodName = document.getElementById('food-name').value;
+            const foodImage = document.getElementById('food-image').files[0];
+
+            if (foodName) {
+                fetch(`search.php?name=${foodName}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('result').innerText = `Water Footprint: ${data.waterFootprint}`;
+                    });
+            } else if (foodImage) {
+                const formData = new FormData();
+                formData.append('food-image', foodImage);
+
+                fetch('upload.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerText = `Water Footprint: ${data.waterFootprint}`;
+                });
+            } else if (cameraStream) {
+                captureImage();
+            } else {
+                alert('Please enter a food name, upload an image, or capture an image with the camera.');
+            }
+        }
+
+        function processImage(dataUrl) {
+            fetch('upload.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ image: dataUrl })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = `Water Footprint: ${data.waterFootprint}`;
+            });
+        }
+    </script>
+</body>
+</html>

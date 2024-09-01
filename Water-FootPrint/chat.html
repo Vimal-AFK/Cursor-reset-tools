@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Chat With Water</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* Light background for the whole page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #a3cedb; /* Background for the chat box */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+        .chat-box {
+            background-color: #bacfec; /* Background for chat messages */
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Floating effect */
+            padding: 15px;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: center;
+        }
+        #user-input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #44a426;
+            color: rgb(255, 255, 255);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(51, 140, 31, 0.5); /* Glowing effect */
+            transition: box-shadow 0.3s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.7); /* More intense glow on hover */
+        }
+        .back-button {
+            display: block;
+            margin-top: 20px;
+            color: #44a426;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-button:hover {
+            text-decoration: underline;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Chat With Water 🤖</h1>
+        <div class="chat-box" id="chat-box">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div class="input-group">
+            <input type="text" id="user-input" placeholder="Type your message here...">
+            <button class="button" onclick="sendMessage()">Send</button>
+        </div>
+        <a href="index.html" class="back-button">← Back to Home</a>
+    </div>
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            const chatBox = document.getElementById('chat-box');
+
+            if (userInput.trim() === "") return; // Ignore empty messages
+
+            // Display user message
+            chatBox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            document.getElementById('user-input').value = '';
+
+            // Simulate chatbot response
+            setTimeout(() => {
+                chatBox.innerHTML += `<p><strong>WaterBot:</strong> This is a simulated response about water footprints.</p>`;
+                chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
